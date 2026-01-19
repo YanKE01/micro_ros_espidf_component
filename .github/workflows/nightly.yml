@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         branch: [rolling, jazzy, humble]
-        idf_target: [ esp32, esp32s2, esp32c3, esp32s3, esp32c6, esp32p4]
+        idf_target: [ esp32, esp32s2, esp32c3, esp32c5, esp32s3, esp32c6, esp32p4]
         idf_version: [ "espressif/idf:release-v4.4", "espressif/idf:release-v5.2", "espressif/idf:release-v5.5" ]
         exclude:
           # Skip IDF v4 + ESP32C6 combination
@@ -26,6 +26,12 @@ jobs:
             idf_version: espressif/idf:release-v4.4
           # Skip IDF v5.2 + ESP32-P4 combination
           - idf_target: esp32p4
+            idf_version: espressif/idf:release-v5.2
+          # Skip IDF v4 + ESP32-C5 combination
+          - idf_target: esp32c5
+            idf_version: espressif/idf:release-v4.4
+          # Skip IDF v5.2 + ESP32-C5 combination
+          - idf_target: esp32c5
             idf_version: espressif/idf:release-v5.2
 
 
@@ -74,7 +80,7 @@ jobs:
 
       - name: Build sample - low_consumption
         shell: bash
-        if: matrix.idf_target != 'esp32c3' && matrix.idf_target != 'esp32s3' && matrix.idf_target != 'esp32c6' && matrix.idf_target != 'esp32p4'
+        if: matrix.idf_target != 'esp32c3' && matrix.idf_target != 'esp32c5' && matrix.idf_target != 'esp32s3' && matrix.idf_target != 'esp32c6' && matrix.idf_target != 'esp32p4'
         run: |
           . $IDF_PATH/export.sh
           cd micro_ros_espidf_component/examples/low_consumption

@@ -248,28 +248,52 @@ menu "UART Settings"
 
 config MICROROS_UART_TXD
     int "UART TX pin"
-    range -1 33
+    range -1 33 if IDF_TARGET_ESP32
+    range -1 45 if IDF_TARGET_ESP32S2
+    range -1 48 if IDF_TARGET_ESP32S3
+    range -1 18 if IDF_TARGET_ESP32C3
+    range -1 30 if IDF_TARGET_ESP32C5
+    range -1 30 if IDF_TARGET_ESP32C6
+    range -1 54 if IDF_TARGET_ESP32P4
     default -1
     help
         Select Tx Down pin for uart connection or -1 for no change (Only used if serial transport is used for microros).
 
 config MICROROS_UART_RXD
     int "UART RX pin"
-    range -1 33
+    range -1 39 if IDF_TARGET_ESP32
+    range -1 46 if IDF_TARGET_ESP32S2
+    range -1 48 if IDF_TARGET_ESP32S3
+    range -1 18 if IDF_TARGET_ESP32C3
+    range -1 30 if IDF_TARGET_ESP32C5
+    range -1 30 if IDF_TARGET_ESP32C6
+    range -1 54 if IDF_TARGET_ESP32P4
     default -1
     help
         Select Rx Down pin for uart connection or -1 for no change (Only used if serial transport is used for microros).
 
 config MICROROS_UART_RTS
     int "UART RTS pin"
-    range -1 33
+    range -1 33 if IDF_TARGET_ESP32
+    range -1 45 if IDF_TARGET_ESP32S2
+    range -1 48 if IDF_TARGET_ESP32S3
+    range -1 18 if IDF_TARGET_ESP32C3
+    range -1 30 if IDF_TARGET_ESP32C5
+    range -1 30 if IDF_TARGET_ESP32C6
+    range -1 54 if IDF_TARGET_ESP32P4
     default -1
     help
         Select RTS Down pin for uart connection or -1 for no change (Only used if serial transport is used for microros).
 
 config MICROROS_UART_CTS
     int "UART CTS pin"
-    range -1 33
+    range -1 39 if IDF_TARGET_ESP32
+    range -1 46 if IDF_TARGET_ESP32S2
+    range -1 48 if IDF_TARGET_ESP32S3
+    range -1 18 if IDF_TARGET_ESP32C3
+    range -1 30 if IDF_TARGET_ESP32C5
+    range -1 30 if IDF_TARGET_ESP32C6
+    range -1 54 if IDF_TARGET_ESP32P4
     default -1
     help
         Select CTS Down pin for uart connection or -1 for no change (Only used if serial transport is used for microros).
